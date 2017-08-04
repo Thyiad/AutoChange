@@ -31,6 +31,9 @@ namespace AutoChange
             Console.WriteLine($"-------------------------------开始修改{Environment.CurrentDirectory}--------------------------------");
             ChangeDir(Environment.CurrentDirectory);
             Console.WriteLine($"-------------------------------结束修改{Environment.CurrentDirectory}--------------------------------");
+
+            Console.WriteLine("按下任意键退出......");
+            Console.ReadKey();
         }
 
         private static void ChangeDir(string dirPath)
