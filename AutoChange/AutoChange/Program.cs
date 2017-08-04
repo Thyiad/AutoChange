@@ -75,7 +75,6 @@ namespace AutoChange
                 {
                     hasChange = true;
                     newLine = newLine.Replace(old, now);
-                    Console.WriteLine($"{filePath}已经被修改");
                 }
                 newLines.Add(newLine);
             }
@@ -83,7 +82,7 @@ namespace AutoChange
             if (hasChange)
             {
                 File.WriteAllLines(filePath, newLines);
-                Console.WriteLine();
+                Console.WriteLine($"{filePath}已经被修改");
             }
 
             // 文件名
