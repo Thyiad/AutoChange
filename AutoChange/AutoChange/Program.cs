@@ -67,8 +67,11 @@ namespace AutoChange
 
         private static void ChangeFile(string filePath)
         {
+            if (filePath.EndsWith(".exe") || filePath.EndsWith(".dll") || filePath.EndsWith(".pdb"))
+                return;
+
             // 文件内容
-            var lines = File.ReadAllLines(filePath);
+            var lines = File.ReadAllLines(filePath,  Encoding.UTF8);
             var hasChange = false;
             var newLines = new List<string>();
             foreach (var line in lines)
@@ -84,7 +87,7 @@ namespace AutoChange
 
             if (hasChange)
             {
-                File.WriteAllLines(filePath, newLines);
+                File.WriteAllLines(filePath, newLines, Encoding.UTF8);
                 Console.WriteLine($"{filePath}已经被修改");
             }
 
