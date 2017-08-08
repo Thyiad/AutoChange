@@ -11,9 +11,12 @@ namespace AutoChange
     {
         private static string old = "";
         private static string now = "";
+        private static List<string> fileExtensions = new List<string>();
 
         static void Main(string[] args)
         {
+            fileExtensions = System.Configuration.ConfigurationSettings.AppSettings["fileExtensions"].Split(new char[','], StringSplitOptions.RemoveEmptyEntries).ToList();
+
             Console.WriteLine("请输入你要替换的原文字......");
             old = Console.ReadLine();
             if (string.IsNullOrEmpty(old))
@@ -67,7 +70,7 @@ namespace AutoChange
 
         private static void ChangeFile(string filePath)
         {
-            if (filePath.EndsWith(".exe") || filePath.EndsWith(".dll") || filePath.EndsWith(".pdb"))
+            if (fileExtensions.Count > 0 && !fileExtensions.Exists(ext => filePath.EndsWith("." + ext)))
                 return;
 
             // 文件内容
