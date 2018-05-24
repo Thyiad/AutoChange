@@ -15,7 +15,7 @@ namespace AutoChange
 
         static void Main(string[] args)
         {
-            fileExtensions = System.Configuration.ConfigurationSettings.AppSettings["fileExtensions"].Split(new char[','], StringSplitOptions.RemoveEmptyEntries).ToList();
+            fileExtensions = System.Configuration.ConfigurationSettings.AppSettings["fileExtensions"].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
 
             Console.WriteLine("请输入你要替换的原文字......");
             old = Console.ReadLine();
